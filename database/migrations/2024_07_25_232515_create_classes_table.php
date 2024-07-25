@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('classes', function (Blueprint $table) {
+            $table->id();
+            $table->string('class_name');
+            $table->integer('shift');
+            $table->integer('vacancies');
+            $table->year('school_year');
+            $table->integer('grade');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('classes');
+    }
+};
