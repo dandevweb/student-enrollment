@@ -2,22 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Enums\Enums\AddressTypeEnum;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
- */
 class AddressFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'student_id' => Student::factory(),
+            'type'       => $this->faker->randomElement(AddressTypeEnum::values()),
+            'street'     => $this->faker->streetName,
+            'zip_code'   => $this->faker->postcode,
+            'number'     => $this->faker->buildingNumber,
+            'complement' => $this->faker->secondaryAddress,
         ];
     }
 }

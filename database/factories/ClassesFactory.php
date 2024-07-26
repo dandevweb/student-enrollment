@@ -2,22 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Enums\Enums\ShiftEnum;
+use App\Enums\GradeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Classes>
- */
 class ClassesFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'class_name'  => $this->faker->word,
+            'shift'       => $this->faker->randomElement(ShiftEnum::values()),
+            'vacancies'   => $this->faker->numberBetween(1, 50),
+            'school_year' => $this->faker->year,
+            'grade'       => $this->faker->numberBetween(GradeEnum::values()),
         ];
     }
 }
