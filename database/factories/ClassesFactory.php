@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\Enums\ShiftEnum;
-use App\Enums\GradeEnum;
+use App\Enums\{GradeEnum, ShiftEnum};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClassesFactory extends Factory

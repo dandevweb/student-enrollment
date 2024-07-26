@@ -12,9 +12,10 @@ class StudentFactory extends Factory
         return [
             'full_name'   => $this->faker->name,
             'birth_date'  => $this->faker->date(),
-            'segment'     => $this->faker->numberBetween(SegmentEnum::values()),
-            'grade'       => $this->faker->numberBetween(GradeEnum::values()),
-            'father_name' => $this->faker
+            'segment'     => $this->faker->randomElement(SegmentEnum::values()),
+            'grade'       => $this->faker->randomElement(GradeEnum::values()),
+            'mother_name' => $this->faker->name('female'),
+            'father_name' => $this->faker->name('male'),
         ];
     }
 }
