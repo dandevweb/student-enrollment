@@ -2,8 +2,12 @@
 
 namespace App\Enums;
 
+use App\Enums\Traits\EnumToArray;
+
 enum SegmentEnum: int
 {
+    use EnumToArray;
+
     case Childish    = 1;
     case EarlyYears  = 2;
     case MiddleYears = 3;

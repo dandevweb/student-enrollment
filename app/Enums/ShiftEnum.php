@@ -2,8 +2,12 @@
 
 namespace App\Enums\Enums;
 
+use App\Enums\Traits\EnumToArray;
+
 enum ShiftEnum: int
 {
+    use EnumToArray;
+
     case Morning   = 1;
     case Afternoon = 2;
     case FullTime  = 3;

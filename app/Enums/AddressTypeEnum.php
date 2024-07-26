@@ -2,8 +2,12 @@
 
 namespace App\Enums\Enums;
 
+use App\Enums\Traits\EnumToArray;
+
 enum AddressTypeEnum: int
 {
+    use EnumToArray;
+
     case Billing        = 1;
     case Residential    = 2;
     case Correspondence = 3;

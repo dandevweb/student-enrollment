@@ -2,8 +2,12 @@
 
 namespace App\Enums;
 
+use App\Enums\Traits\EnumToArray;
+
 enum GradeEnum: int
 {
+    use EnumToArray;
+
     case G1           = 1;
     case G2           = 2;
     case G3           = 3;
