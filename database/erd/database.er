@@ -5,6 +5,7 @@ Table users { //CREATED
     name string
     email string [unique, null]
     password string [null]
+    role int //enum('Secretaria', 'Assistente', 'Cadastro')
     created_at datetime
     updated_at datetime
 }
