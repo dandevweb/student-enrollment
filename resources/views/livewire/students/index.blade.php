@@ -14,7 +14,9 @@
                         <p class="mt-2 text-sm text-gray-700">Listagem de Alunos</p>
                     </div>
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                        <x-primary-button>Adicionar</x-primary-button>
+                        <x-primary-button
+                            wire:click="$dispatch('openModal', {
+                            component: 'students.create' })">Adicionar</x-primary-button>
                     </div>
                 </div>
                 <div class="mt-8 flow-root">

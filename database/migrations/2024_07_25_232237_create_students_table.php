@@ -15,6 +15,11 @@ return new class () extends Migration {
             $table->integer('grade');
             $table->string('father_name');
             $table->string('mother_name');
+            $table->integer('address_type');
+            $table->string('street');
+            $table->string('zip_code');
+            $table->string('number');
+            $table->string('complement')->nullable();
             $table->timestamps();
         });
     }

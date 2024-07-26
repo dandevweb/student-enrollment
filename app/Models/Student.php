@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AddressTypeEnum;
 use App\Enums\{GradeEnum, SegmentEnum};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -13,9 +14,10 @@ class Student extends Model
     use HasFactory;
 
     protected $casts = [
-        'segment' => SegmentEnum::class,
-        'grade'   => GradeEnum::class,
-        'birth_date' => 'date',
+        'segment'      => SegmentEnum::class,
+        'grade'        => GradeEnum::class,
+        'address_type' => AddressTypeEnum::class,
+        'birth_date'   => 'date',
     ];
 
     protected function registration(): Attribute
@@ -28,20 +30,15 @@ class Student extends Model
     protected function segmentName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->segment ? SegmentEnum::getDescription($this->segment) : null,
+            get: fn () => SegmentEnum::getDescription($this->segment->value),
         );
     }
 
     protected function gradeName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->grade ? GradeEnum::getDescription($this->grade) : null,
+            get: fn () => GradeEnum::getDescription($this->grade->value),
         );
-    }
-
-    public function addresses(): HasMany
-    {
-        return $this->hasMany(Address::class);
     }
 
     public function enrollments(): HasMany

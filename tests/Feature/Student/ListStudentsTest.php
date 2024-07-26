@@ -1,0 +1,56 @@
+<?php
+
+use Livewire\Livewire;
+use App\Models\{Student, User};
+use App\Livewire\{Students};
+
+use function Pest\Laravel\{actingAs};
+
+beforeEach(function () {
+    $this->user = User::factory()->create();
+});
+
+
+it('should be able to access the route students', function () {
+    actingAs($this->user)->get(route('students'))->assertOk();
+});
+
+test("let's create a livewire component to list all students in the page", function () {
+    actingAs(User::factory()->create());
+    $students = Student::factory()->count(10)->create();
+
+    $lw = Livewire::test(Students\Index::class);
+
+    $lw->assertSet('students', function ($items) {
+        expect($items)
+        ->toHaveCount(10);
+
+        return true;
+    });
+
+    foreach ($students as $student) {
+        $lw->assertSee($student->full_name);
+    }
+});
+
+it('should be able to filter by full name', function () {
+    Student::factory()->create(['full_name' => 'joe Doe']);
+    $mario = Student::factory()->create(['full_name' => 'Mario']);
+
+    actingAs($this->user);
+
+    Livewire::test(Students\Index::class)
+        ->assertSet('students', function ($items) {
+            expect($items)->toHaveCount(2);
+
+            return true;
+        })
+        ->set('search', 'mar')
+        ->assertPropertyWired('search')
+        ->assertSet('students', function ($items) {
+            expect($items)->toHaveCount(1)->first()->full_name->toBe('Mario');
+
+            return true;
+        });
+
+});

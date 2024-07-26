@@ -18,14 +18,7 @@ Table students {
     grade int //enum('G1', 'G2', 'G3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12')
     father_name string
     mother_name string
-    created_at datetime
-    updated_at datetime
-}
-
-Table addresses {
-    id int [pk, increment]
-    student_id int [ref: > students.id]
-    type int //enum('Cobrança', 'Residencial', 'Correspondência')
+    address_type int //enum('Cobrança', 'Residencial', 'Correspondência')
     street string
     zip_code string
     number string

@@ -3,11 +3,9 @@
 namespace App\Livewire\Students;
 
 use App\Models\Student;
-use Livewire\Component;
+use Livewire\{Component, WithPagination};
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use Livewire\Attributes\Computed;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class Index extends Component
@@ -29,7 +27,9 @@ class Index extends Component
         return Student::query()
             ->when(
                 $this->search,
-                fn ($query, $search) => $query->where('full_name', 'like', "%$search%"))
+                fn ($query, $search) => $query->where('full_name', 'like', "%$search%")
+            )
+            ->latest()
             ->paginate(5);
     }
 }
