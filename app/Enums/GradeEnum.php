@@ -24,24 +24,24 @@ enum GradeEnum: int
     case SecondYearHS = 14;
     case ThirdYearHS  = 15;
 
-    public static function getDescription(int $value): string
+    public static function getDescription(self $value): string
     {
         return match ($value) {
-            self::G1->value           => 'G1',
-            self::G2->value           => 'G2',
-            self::G3->value           => 'G3',
-            self::First->value        => '1º ano',
-            self::Second->value       => '2º ano',
-            self::Third->value        => '3º ano',
-            self::Fourth->value       => '4º ano',
-            self::Fifth->value        => '5º ano',
-            self::Sixth->value        => '6º ano',
-            self::Seventh->value      => '7º ano',
-            self::Eighth->value       => '8º ano',
-            self::Ninth->value        => '9º ano',
-            self::FirstYearHS->value  => '1º ano do Ensino Médio',
-            self::SecondYearHS->value => '2º ano do Ensino Médio',
-            self::ThirdYearHS->value  => '3º ano do Ensino Médio',
+            self::G1          => 'G1',
+            self::G2          => 'G2',
+            self::G3          => 'G3',
+            self::First       => '1º ano',
+            self::Second      => '2º ano',
+            self::Third       => '3º ano',
+            self::Fourth      => '4º ano',
+            self::Fifth       => '5º ano',
+            self::Sixth       => '6º ano',
+            self::Seventh     => '7º ano',
+            self::Eighth      => '8º ano',
+            self::Ninth       => '9º ano',
+            self::FirstYearHS => '1º ano do Ensino Médio',
+            self::SecondYearHS=> '2º ano do Ensino Médio',
+            self::ThirdYearHS => '3º ano do Ensino Médio',
             default                   => 'Desconhecido',
         };
     }

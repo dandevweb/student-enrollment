@@ -15,12 +15,27 @@ class Student extends Model
     protected $casts = [
         'segment' => SegmentEnum::class,
         'grade'   => GradeEnum::class,
+        'birth_date' => 'date',
     ];
 
     protected function registration(): Attribute
     {
         return Attribute::make(
             get: fn () => str_pad((string)$this->id, 5, '0', STR_PAD_LEFT),
+        );
+    }
+
+    protected function segmentName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->segment ? SegmentEnum::getDescription($this->segment) : null,
+        );
+    }
+
+    protected function gradeName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->grade ? GradeEnum::getDescription($this->grade) : null,
         );
     }
 

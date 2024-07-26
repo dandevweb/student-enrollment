@@ -14,13 +14,13 @@ enum SegmentEnum: int
     case HighSchool  = 4;
 
 
-    public static function getDescription(int $value): string
+    public static function getDescription(self $value): string
     {
         return match ($value) {
-            self::Childish->value    => 'Infantil',
-            self::EarlyYears->value  => 'Anos iniciais',
-            self::MiddleYears->value => 'Anos finais',
-            self::HighSchool->value  => 'Ensino Médio',
+            self::Childish    => 'Infantil',
+            self::EarlyYears  => 'Anos iniciais',
+            self::MiddleYears => 'Anos finais',
+            self::HighSchool  => 'Ensino Médio',
             default                  => 'Desconhecido',
         };
     }
