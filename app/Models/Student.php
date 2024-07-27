@@ -17,7 +17,7 @@ class Student extends Model
         'segment'      => SegmentEnum::class,
         'grade'        => GradeEnum::class,
         'address_type' => AddressTypeEnum::class,
-        'birth_date'   => 'date',
+        'birth_date'   => 'date:Y-m-d',
     ];
 
     protected function registration(): Attribute

@@ -16,7 +16,7 @@
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                         <x-primary-button
                             wire:click="$dispatch('openModal', {
-                            component: 'students.create' })">Adicionar</x-primary-button>
+                            component: 'students.form' })">Adicionar</x-primary-button>
                     </div>
                 </div>
                 <div class="mt-8 flow-root">
@@ -76,12 +76,14 @@
 
                                                 <td
                                                     class="flex items-center justify-evenly py-4 pl-3 pr-4 text-sm font-medium sm:pr-6">
-                                                    <a href="#"
+                                                    <button
+                                                        wire:click="$dispatch('openModal', {
+                            component: 'students.form',  arguments: { student: {{ $item }}} })"
                                                         class="text-yellow-500 hover:text-yellow-700">
                                                         <x-tooltip title="Editar">
                                                             <x-heroicon-o-pencil class="h-6 w-6" />
                                                         </x-tooltip>
-                                                    </a>
+                                                    </button>
 
                                                     <button type="button" wire:click="#"
                                                         class="text-red-600 hover:text-red-900">
