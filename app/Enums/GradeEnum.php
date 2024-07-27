@@ -45,4 +45,37 @@ enum GradeEnum: int
             default                   => 'Desconhecido',
         };
     }
+
+    //get by segment
+    public static function getBySegment(SegmentEnum $segment): array
+    {
+        return match($segment) {
+            SegmentEnum::Childish => [
+                self::G1->value => self::getDescription(self::G1->value),
+                self::G2->value => self::getDescription(self::G2->value),
+                self::G3->value => self::getDescription(self::G3->value),
+            ],
+
+            SegmentEnum::EarlyYears => [
+                self::First->value  => self::getDescription(self::First->value),
+                self::Second->value => self::getDescription(self::Second->value),
+                self::Third->value  => self::getDescription(self::Third->value),
+                self::Fourth->value => self::getDescription(self::Fourth->value),
+                self::Fifth->value  => self::getDescription(self::Fifth->value),
+            ],
+
+            SegmentEnum::MiddleYears => [
+                self::Sixth->value   => self::getDescription(self::Sixth->value),
+                self::Seventh->value => self::getDescription(self::Seventh->value),
+                self::Eighth->value  => self::getDescription(self::Eighth->value),
+                self::Ninth->value   => self::getDescription(self::Ninth->value),
+            ],
+
+            SegmentEnum::HighSchool => [
+                self::FirstYearHS->value  => self::getDescription(self::FirstYearHS->value),
+                self::SecondYearHS->value => self::getDescription(self::SecondYearHS->value),
+                self::ThirdYearHS->value  => self::getDescription(self::ThirdYearHS->value),
+            ],
+        };
+    }
 }

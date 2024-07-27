@@ -5,8 +5,8 @@
 ])
 
 <div class="relative mt-2 rounded-md shadow-md">
-    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <x-dynamic-component :component="'icon.' . $icon" class="h-5 w-5 text-gray-400" />
+    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <x-dynamic-component :component="'heroicon-o-' . $icon" class="w-5 h-5 text-gray-400" />
     </div>
     <input value="{{ $value ?? old('title') }}" {!! $attributes->merge([
         'class' =>

@@ -4,7 +4,7 @@ namespace App\Livewire\Forms;
 
 use Livewire\Form;
 use App\Models\Student;
-use App\Enums\{AddressTypeEnum, GradeEnum, SegmentEnum};
+use App\Enums\{AddressTypeEnum, GradeEnum};
 use Livewire\Attributes\Validate;
 
 class StudentForm extends Form
@@ -55,25 +55,6 @@ class StudentForm extends Form
 
     public function setSegment(GradeEnum $grade)
     {
-        return match($grade) {
-            GradeEnum::G1,
-            GradeEnum::G2,
-            GradeEnum::G3 => SegmentEnum::Childish,
-
-            GradeEnum::First,
-            GradeEnum::Second,
-            GradeEnum::Third,
-            GradeEnum::Fourth,
-            GradeEnum::Fifth => SegmentEnum::EarlyYears,
-
-            GradeEnum::Sixth,
-            GradeEnum::Seventh,
-            GradeEnum::Eighth,
-            GradeEnum::Ninth => SegmentEnum::MiddleYears,
-
-            GradeEnum::FirstYearHS,
-            GradeEnum::SecondYearHS,
-            GradeEnum::ThirdYearHS => SegmentEnum::HighSchool,
-        };
+        return setSegment($grade);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\{GradeEnum, SegmentEnum};
+
 if (! function_exists('user')) {
 
     function user(): ?\App\Models\User
@@ -19,5 +21,31 @@ if (! function_exists('deleteOptions')) {
             "confirmButton"     => "btn btn-danger",
             "cancelButton"      => "btn btn-secondary"
         ];
+    }
+}
+
+if(! function_exists('setSegment')) {
+    function setSegment(GradeEnum $grade): SegmentEnum
+    {
+        return match($grade) {
+            GradeEnum::G1,
+            GradeEnum::G2,
+            GradeEnum::G3 => SegmentEnum::Childish,
+
+            GradeEnum::First,
+            GradeEnum::Second,
+            GradeEnum::Third,
+            GradeEnum::Fourth,
+            GradeEnum::Fifth => SegmentEnum::EarlyYears,
+
+            GradeEnum::Sixth,
+            GradeEnum::Seventh,
+            GradeEnum::Eighth,
+            GradeEnum::Ninth => SegmentEnum::MiddleYears,
+
+            GradeEnum::FirstYearHS,
+            GradeEnum::SecondYearHS,
+            GradeEnum::ThirdYearHS => SegmentEnum::HighSchool,
+        };
     }
 }

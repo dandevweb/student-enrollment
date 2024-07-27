@@ -10,5 +10,12 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
         Student::factory()->count(300)->create();
+
+        Student::all()->each(function ($student) {
+            $student->update([
+                'grade'   => $student->grade,
+                'segment' => setSegment($student->grade),
+            ]);
+        });
     }
 }
