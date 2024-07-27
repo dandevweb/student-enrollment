@@ -14,8 +14,9 @@ class ClassModel extends Model
 
     protected $table = 'classes';
     protected $casts = [
-        'grade' => GradeEnum::class,
-        'shift' => ShiftEnum::class,
+        'grade'       => GradeEnum::class,
+        'shift'       => ShiftEnum::class,
+        'school_year' => 'integer',
     ];
 
     public function enrollments(): HasMany
