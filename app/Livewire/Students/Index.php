@@ -3,16 +3,19 @@
 namespace App\Livewire\Students;
 
 use App\Models\Student;
-use Livewire\{Component, WithPagination};
 use Illuminate\View\View;
-use Livewire\Attributes\Computed;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Attributes\{Computed, On};
+use Livewire\{Component, WithPagination};
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class Index extends Component
 {
+    use LivewireAlert;
     use WithPagination;
 
     public ?string $search = null;
+    public ?int $modelId   = null;
 
     public function render(): View
     {
@@ -31,5 +34,19 @@ class Index extends Component
             )
             ->latest()
             ->paginate(5);
+    }
+
+    public function tryDelete(int $id): void
+    {
+        $this->modelId = $id;
+        $this->confirm('Tem certeza?', deleteOptions());
+    }
+
+    #[On('confirmed')]
+    public function delete(): void
+    {
+        Student::findOrFail($this->modelId)->delete();
+
+        $this->alert('success', 'Aluno excluído com sucesso!');
     }
 }

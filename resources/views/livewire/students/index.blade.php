@@ -85,7 +85,8 @@
                                                         </x-tooltip>
                                                     </button>
 
-                                                    <button type="button" wire:click="#"
+                                                    <button type="button"
+                                                        wire:click="tryDelete({{ $item->id }})"
                                                         class="text-red-600 hover:text-red-900">
                                                         <x-tooltip title="Excluir">
                                                             <x-heroicon-o-trash class="h-6 w-6" />
