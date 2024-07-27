@@ -20,6 +20,7 @@ return new class () extends Migration {
             $table->string('zip_code');
             $table->string('number');
             $table->string('complement')->nullable();
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <div class="rounded-lg border shadow-lg">
-    <x-header-modal title="Cadastrar Aluno" />
+    <x-header-modal title="{{ isset($class->id) ? 'Editar Turma' : 'Cadastrar Turma' }}" />
     <form wire:submit='save' class="space-y-4 p-4">
         <div class="grid items-center gap-4 lg:flex">
             <div class="lg:w-1/2">

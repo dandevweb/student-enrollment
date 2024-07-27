@@ -6,7 +6,7 @@ use App\Enums\AddressTypeEnum;
 use App\Enums\{GradeEnum, SegmentEnum};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\{BelongsToMany, HasMany};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
@@ -19,6 +19,17 @@ class Student extends Model
         'address_type' => AddressTypeEnum::class,
         'birth_date'   => 'date:Y-m-d',
     ];
+
+    public function classes(): BelongsToMany
+    {
+        return $this->belongsToMany(ClassModel::class, 'enrollments', 'student_id', 'class_id')
+                    ->withTimestamps();
+    }
+
+    public function enrollments(): HasMany
+    {
+        return $this->hasMany(Enrollment::class);
+    }
 
     protected function registration(): Attribute
     {
@@ -39,10 +50,5 @@ class Student extends Model
         return Attribute::make(
             get: fn () => GradeEnum::getDescription($this->grade->value),
         );
-    }
-
-    public function enrollments(): HasMany
-    {
-        return $this->hasMany(Enrollment::class);
     }
 }

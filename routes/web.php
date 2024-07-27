@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\{Students, Classes};
+use App\Livewire\{
+    Students,
+    Classes,
+    EnrollStudents
+};
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/students', Students\Index::class)->name('students');
     Route::get('classes', Classes\Index::class)->name('classes');
+    Route::get('enroll', EnrollStudents::class)->name('enroll');
 });
 
 // useless routes

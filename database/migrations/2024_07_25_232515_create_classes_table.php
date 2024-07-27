@@ -14,6 +14,7 @@ return new class () extends Migration {
             $table->integer('vacancies');
             $table->year('school_year');
             $table->integer('grade');
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

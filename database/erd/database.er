@@ -23,6 +23,7 @@ Table students {
     zip_code string
     number string
     complement string [null]
+    position int [null]
     created_at datetime
     updated_at datetime
 }
@@ -34,6 +35,7 @@ Table classes {
     vacancies int
     school_year year
     grade int  //enum('G1', 'G2', 'G3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12')
+    position int [null]
     created_at datetime
     updated_at datetime
 }

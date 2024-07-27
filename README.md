@@ -5,3 +5,5 @@ https://github.com/wire-elements/modal
 https://github.com/lucascudo/laravel-pt-BR-localization
 
 https://github.com/jantinnerezo/livewire-alert
+
+https://sortablejs.github.io/Sortable/

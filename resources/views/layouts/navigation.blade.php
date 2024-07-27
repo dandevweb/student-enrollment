@@ -23,6 +23,10 @@
                     <x-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
                         {{ __('Classes') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
+                        {{ __('Enroll') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -94,6 +98,10 @@
 
             <x-responsive-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
                 {{ __('Classes') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
+                {{ __('Enroll') }}
             </x-responsive-nav-link>
         </div>
 
