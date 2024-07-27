@@ -29,7 +29,7 @@ Table students {
 
 Table classes {
     id int [pk, increment]
-    class_name string
+    name string
     shift int //enum('Manhã', 'Tarde', 'Integral')
     vacancies int
     school_year year

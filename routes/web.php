@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Students;
-
+use App\Livewire\{Students, Classes};
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/students', Students\Index::class)->name('students');
+    Route::get('classes', Classes\Index::class)->name('classes');
 });
 
 // useless routes

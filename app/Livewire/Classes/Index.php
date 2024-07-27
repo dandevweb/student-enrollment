@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Students;
+namespace App\Livewire\Classes;
 
-use App\Models\Student;
-use Illuminate\View\View;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\{Computed, On};
 use Livewire\{Component, WithPagination};
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Livewire\Attributes\{Computed, On};
+use Illuminate\View\View;
+use App\Models\ClassModel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Index extends Component
 {
@@ -19,15 +19,13 @@ class Index extends Component
 
     public function render(): View
     {
-        return view('livewire.students.index')->layoutData([
-            'header' => 'Students',
-        ]);
+        return view('livewire.classes.index');
     }
 
     #[Computed]
-    public function students(): LengthAwarePaginator
+    public function classes(): LengthAwarePaginator
     {
-        return Student::query()
+        return ClassModel::query()
             ->latest()
             ->paginate(10);
     }
@@ -41,8 +39,8 @@ class Index extends Component
     #[On('confirmed')]
     public function delete(): void
     {
-        Student::findOrFail($this->modelId)->delete();
+        ClassModel::findOrFail($this->modelId)->delete();
 
-        $this->alert('success', 'Aluno excluído com sucesso!');
+        $this->alert('success', 'Turma excluída com sucesso!');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\{GradeEnum, ShiftEnum};
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,5 +21,19 @@ class ClassModel extends Model
     public function enrollments(): HasMany
     {
         return $this->hasMany(Enrollment::class);
+    }
+
+    protected function shiftName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => ShiftEnum::getDescription($this->shift->value),
+        );
+    }
+
+    protected function gradeName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => GradeEnum::getDescription($this->grade->value),
+        );
     }
 }

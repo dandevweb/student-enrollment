@@ -9,7 +9,7 @@ return new class () extends Migration {
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('class_name');
+            $table->string('name');
             $table->integer('shift');
             $table->integer('vacancies');
             $table->year('school_year');
