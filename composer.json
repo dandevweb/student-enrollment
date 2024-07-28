@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-heroicons": "^2.4",
+        "christophrumpel/missing-livewire-assertions": "^2.8",
         "jantinnerezo/livewire-alert": "^3.0",
         "laravel/breeze": "^2.1",
         "laravel/framework": "^11.9",

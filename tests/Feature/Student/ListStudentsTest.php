@@ -50,3 +50,19 @@ it('should be able to paginate the result', function () {
         });
 
 });
+
+it('should display students across multiple pages', function () {
+    $user = User::factory()->create();
+    actingAs($user);
+
+    Student::factory()->count(30)->create();
+
+    $lw = Livewire::test(Students\Index::class)
+        ->call('gotoPage', 2);
+
+    $students = Student::latest()->skip(config('app.per_page.default'))->take(config('app.per_page.default'))->get();
+
+    foreach ($students as $student) {
+        $lw->assertSee($student->full_name);
+    }
+});
