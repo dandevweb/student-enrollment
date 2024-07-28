@@ -36,10 +36,9 @@ test("let's create a livewire component to list all students in the page", funct
 });
 
 it('should be able to paginate the result', function () {
-    $user = User::factory()->create();
     Student::factory(30)->create();
 
-    actingAs($user);
+    actingAs($this->user);
 
     Livewire::test(Students\Index::class)
         ->assertSet('students', function (LengthAwarePaginator $items) {
@@ -52,8 +51,7 @@ it('should be able to paginate the result', function () {
 });
 
 it('should display students across multiple pages', function () {
-    $user = User::factory()->create();
-    actingAs($user);
+    actingAs($this->user);
 
     Student::factory()->count(30)->create();
 
