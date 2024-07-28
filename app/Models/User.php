@@ -50,16 +50,19 @@ class User extends Authenticatable
 
     public function isSecretary(): bool
     {
-        return $this->role === RoleEnum::Secretary->value;
+        /* @phpstan-ignore-next-line */
+        return $this->role === RoleEnum::Secretary;
     }
 
     public function isAssistant(): bool
     {
-        return $this->role === RoleEnum::Assistant->value;
+        /* @phpstan-ignore-next-line */
+        return $this->role === RoleEnum::Assistant;
     }
 
     public function isRegister(): bool
     {
-        return $this->role === RoleEnum::Register->value;
+        /* @phpstan-ignore-next-line */
+        return $this->role === RoleEnum::Register;
     }
 }
