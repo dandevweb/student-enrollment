@@ -54,3 +54,103 @@ it('should be able to updated a student', function () {
         'complement'   => 'Apt. 123',
     ]);
 });
+
+describe('validations', function () {
+    test('full name should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.full_name', $value)
+            ->call('save')
+            ->assertHasErrors(['form.full_name' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'min'      => ['min', 'Jo'],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+
+    test('birth date should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.birth_date', $value)
+            ->call('save')
+            ->assertHasErrors(['form.birth_date' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'date'     => ['date', 'invalid-date'],
+    ]);
+
+    test('grade should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.grade', $value)
+            ->call('save')
+            ->assertHasErrors(['form.grade' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+    ]);
+
+    test('father name should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.father_name', $value)
+            ->call('save')
+            ->assertHasErrors(['form.father_name' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+
+    test('mother name should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.mother_name', $value)
+            ->call('save')
+            ->assertHasErrors(['form.mother_name' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+
+    test('address type should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.address_type', $value)
+            ->call('save')
+            ->assertHasErrors(['form.address_type' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+    ]);
+
+    test('street should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.street', $value)
+            ->call('save')
+            ->assertHasErrors(['form.street' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+
+    test('zip code should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.zip_code', $value)
+            ->call('save')
+            ->assertHasErrors(['form.zip_code' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+
+    test('number should required', function ($rule, $value) {
+        Livewire::test(Students\Form::class)
+            ->set('student', $this->student)
+            ->set('form.number', $value)
+            ->call('save')
+            ->assertHasErrors(['form.number' => $rule]);
+    })->with([
+        'required' => ['required', ''],
+        'max'      => ['max', str_repeat('a', 256)],
+    ]);
+});
