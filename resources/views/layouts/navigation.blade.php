@@ -15,22 +15,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
-                        {{ __('Students') }}
-                    </x-nav-link>
+                    @if (auth()->user()->isSecretary() || auth()->user()->isAssistant())
+                        <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
+                            {{ __('Students') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
+                            {{ __('Classes') }}
+                        </x-nav-link>
+                    @endif
 
-                    <x-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
-                        {{ __('Classes') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
-                        {{ __('Enroll') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
-                        {{ __('Reports') }}
-                    </x-nav-link>
-
+                    @if (auth()->user()->isSecretary())
+                        <x-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
+                            {{ __('Enroll') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -40,7 +38,7 @@
                     <x-slot name="trigger">
                         <button
                             class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
-                            <div>{{ user()->name }}</div>
+                            <div>{{ auth()->user()->name }}</div>
 
                             <div class="ms-1">
                                 <x-heroicon-o-chevron-down class="w-4 h-4" />
@@ -67,7 +65,6 @@
                 </x-dropdown>
             </div>
 
-
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
                 <button @click="open = ! open"
@@ -92,24 +89,27 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('students')" :active="request()->routeIs('students')">
-                {{ __('Students') }}
-            </x-responsive-nav-link>
+            @if (auth()->user()->isSecretary() || auth()->user()->isAssistant())
+                <x-responsive-nav-link :href="route('students')" :active="request()->routeIs('students')">
+                    {{ __('Students') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
+                    {{ __('Classes') }}
+                </x-responsive-nav-link>
+            @endif
 
-            <x-responsive-nav-link :href="route('classes')" :active="request()->routeIs('classes')">
-                {{ __('Classes') }}
-            </x-responsive-nav-link>
-
-            <x-responsive-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
-                {{ __('Enroll') }}
-            </x-responsive-nav-link>
+            @if (auth()->user()->isSecretary())
+                <x-responsive-nav-link :href="route('enroll')" :active="request()->routeIs('enroll')">
+                    {{ __('Enroll') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="text-base font-medium text-gray-800">{{ auth()->user()->name }}</div>
+                <div class="text-sm font-medium text-gray-500">{{ auth()->user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">

@@ -12,7 +12,7 @@ class ClassModelFactory extends Factory
         return [
             'name'        => strtoupper($this->faker->randomLetter()),
             'shift'       => $this->faker->randomElement(ShiftEnum::values()),
-            'vacancies'   => $this->faker->numberBetween(1, 50),
+            'vacancies'   => $this->faker->numberBetween(10, 30),
             'school_year' => $this->faker->year,
             'grade'       => $this->faker->randomElement(GradeEnum::values()),
             'position'    => $this->faker->numberBetween(1, 100),

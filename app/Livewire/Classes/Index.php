@@ -17,6 +17,13 @@ class Index extends Component
     public ?string $search = null;
     public ?int $modelId   = null;
 
+    public function mount(): void
+    {
+        if(user()->isRegister()) {
+            abort(403);
+        }
+    }
+
     public function render(): View
     {
         return view('livewire.classes.index');

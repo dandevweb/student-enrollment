@@ -17,6 +17,13 @@ class EnrollStudents extends Component
     public $students         = [];
     public $classes          = [];
 
+    public function mount(): void
+    {
+        if(!user()->isSecretary()) {
+            abort(403);
+        }
+    }
+
     public function render(): View
     {
         return view('livewire.enroll-students');

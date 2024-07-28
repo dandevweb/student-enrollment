@@ -47,4 +47,19 @@ class User extends Authenticatable
             'role'              => RoleEnum::class,
         ];
     }
+
+    public function isSecretary(): bool
+    {
+        return $this->role === RoleEnum::Secretary->value;
+    }
+
+    public function isAssistant(): bool
+    {
+        return $this->role === RoleEnum::Assistant->value;
+    }
+
+    public function isRegister(): bool
+    {
+        return $this->role === RoleEnum::Register->value;
+    }
 }
