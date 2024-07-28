@@ -11,7 +11,7 @@ beforeEach(function () {
     $this->student = Student::factory()->create();
 });
 
-it('should be able to archive a student', function () {
+it('should be able to delete a student', function () {
     Livewire::test(Index::class)
         ->set('modelId', $this->student->id)
         ->call('delete');
