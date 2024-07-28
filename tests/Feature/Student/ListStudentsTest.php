@@ -1,7 +1,9 @@
 <?php
 
 use Livewire\Livewire;
+use App\Enums\RoleEnum;
 use App\Livewire\{Students};
+
 use App\Models\{Student, User};
 
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -9,7 +11,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use function Pest\Laravel\{actingAs};
 
 beforeEach(function () {
-    $this->user = User::factory()->create();
+    $this->user = User::factory()->create([
+        'role' => RoleEnum::Secretary,
+    ]);
+    ;
 });
 
 
@@ -18,7 +23,7 @@ it('should be able to access the route students', function () {
 });
 
 test("let's create a livewire component to list all students in the page", function () {
-    actingAs(User::factory()->create());
+    actingAs($this->user);
     $students = Student::factory()->count(10)->create();
 
     $lw = Livewire::test(Students\Index::class);

@@ -7,7 +7,7 @@ use Livewire\Attributes\{Computed, On};
 use Illuminate\View\View;
 use App\Models\ClassModel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class Index extends Component
 {
