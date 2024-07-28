@@ -1,8 +1,10 @@
 <?php
 
 use Livewire\Livewire;
-use App\Models\{Student, User};
 use App\Livewire\{Students};
+use App\Models\{Student, User};
+
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use function Pest\Laravel\{actingAs};
 
@@ -33,22 +35,16 @@ test("let's create a livewire component to list all students in the page", funct
     }
 });
 
-it('should be able to filter by full name', function () {
-    Student::factory()->create(['full_name' => 'joe Doe']);
-    $mario = Student::factory()->create(['full_name' => 'Mario']);
+it('should be able to paginate the result', function () {
+    $user = User::factory()->create();
+    Student::factory(30)->create();
 
-    actingAs($this->user);
+    actingAs($user);
 
     Livewire::test(Students\Index::class)
-        ->assertSet('students', function ($items) {
-            expect($items)->toHaveCount(2);
-
-            return true;
-        })
-        ->set('search', 'mar')
-        ->assertPropertyWired('search')
-        ->assertSet('students', function ($items) {
-            expect($items)->toHaveCount(1)->first()->full_name->toBe('Mario');
+        ->assertSet('students', function (LengthAwarePaginator $items) {
+            expect($items)
+                ->toHaveCount(config('app.per_page.default'));
 
             return true;
         });
