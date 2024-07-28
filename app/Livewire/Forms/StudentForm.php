@@ -9,7 +9,7 @@ use Livewire\Attributes\Validate;
 
 class StudentForm extends Form
 {
-    #[Validate(['required', 'string', 'max:255'])]
+    #[Validate(['required', 'string', 'min:5', 'max:255'])]
     public string $full_name;
 
     #[Validate(['required', 'date'])]
