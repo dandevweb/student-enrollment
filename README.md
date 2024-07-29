@@ -139,3 +139,8 @@ Para rodar os testes, execute o comando:
 **JS npm**
 
 -   [SortableJS](https://sortablejs.github.io/Sortable/)
+
+## LINK PARA O CV
+
+-   [Download PDF](https://cv.dansol.com.br/Danilo%20Augusto.pdf)
+-   [CV Online](https://cv.dansol.com.br)
