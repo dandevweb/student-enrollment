@@ -22,6 +22,7 @@ class StudentFactory extends Factory
             'zip_code'     => $this->faker->postcode,
             'number'       => $this->faker->buildingNumber,
             'complement'   => $this->faker->secondaryAddress,
+            'position'     => $this->faker->numberBetween(1, 100),
         ];
     }
 }
