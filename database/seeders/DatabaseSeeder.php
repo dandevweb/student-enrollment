@@ -28,11 +28,6 @@ class DatabaseSeeder extends Seeder
             'role'  => RoleEnum::Register,
         ]);
 
-        User::factory()->create([
-            'name'  => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
         $this->call([
             StudentSeeder::class,
             ClassesSeeder::class,
