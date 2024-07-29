@@ -24,7 +24,7 @@ it('should be able to access the route classes', function () {
 });
 
 test("let's create a livewire component to list all classes in the page", function () {
-    actingAs(User::factory()->create());
+    actingAs($this->user);
     $classes = ClassModel::factory()->count(10)->create();
 
     $lw = Livewire::test(Classes\Index::class);
