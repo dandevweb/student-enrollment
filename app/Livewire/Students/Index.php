@@ -19,9 +19,7 @@ class Index extends Component
 
     public function render(): View
     {
-        return view('livewire.students.index')->layoutData([
-            'header' => 'Students',
-        ]);
+        return view('livewire.students.index');
     }
 
     #[Computed]

@@ -34,7 +34,7 @@ class Index extends Component
     {
         return ClassModel::query()
             ->latest()
-            ->paginate(10);
+            ->paginate(config('app.per_page.default'));
     }
 
     public function tryDelete(int $id): void

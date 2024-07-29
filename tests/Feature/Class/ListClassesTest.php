@@ -1,15 +1,18 @@
 <?php
 
-use App\Enums\RoleEnum;
 use Livewire\Livewire;
+use App\Enums\RoleEnum;
 use App\Livewire\{Classes};
 
 use App\Models\{ClassModel, User};
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 use function Pest\Laravel\{actingAs};
 
+uses(RefreshDatabase::class);
 beforeEach(function () {
     $this->user = User::factory()->create([
         'role' => RoleEnum::Secretary,
@@ -27,6 +30,7 @@ test("let's create a livewire component to list all classes in the page", functi
     $lw = Livewire::test(Classes\Index::class);
 
     $lw->assertSet('classes', function ($items) {
+
         expect($items)
         ->toHaveCount(10);
 
@@ -34,7 +38,7 @@ test("let's create a livewire component to list all classes in the page", functi
     });
 
     foreach ($classes as $class) {
-        $lw->assertSee($class->full_name);
+        $lw->assertSee($class->name);
     }
 });
 

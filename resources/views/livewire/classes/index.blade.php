@@ -112,7 +112,6 @@
                                     {{ $this->classes->links() }}
                                 </div>
 
-
                             </div>
                         </div>
                     </div>
